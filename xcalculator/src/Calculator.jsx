@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "./Calculator.module.css";
 function Calculator() {
   const [input, setInput] = useState("");
   const [evaluatedValue, setEvaluatedValue] = useState(null);
@@ -41,30 +42,30 @@ function Calculator() {
 
   return (
     <>
-      <h1>React Calculator</h1>
-      <input readOnly value={input} />
+      <h1 className={styles.h1}>React Calculator</h1>
+      <input readOnly value={input} className={styles.input} />
       {evaluatedValue && <h3>{evaluatedValue}</h3>}
-      <br />
-      <br />
-      <button onClick={handleInputButtonValues}>7</button>
-      <button onClick={handleInputButtonValues}>8</button>
-      <button onClick={handleInputButtonValues}>9</button>
-      <button onClick={handleInputButtonValues}>+</button>
-      <br />
-      <button onClick={handleInputButtonValues}>4</button>
-      <button onClick={handleInputButtonValues}>5</button>
-      <button onClick={handleInputButtonValues}>6</button>
-      <button onClick={handleInputButtonValues}>-</button>
-      <br />
-      <button onClick={handleInputButtonValues}>1</button>
-      <button onClick={handleInputButtonValues}>2</button>
-      <button onClick={handleInputButtonValues}>3</button>
-      <button onClick={handleInputButtonValues}>*</button>
-      <br />
-      <button onClick={clearInputBox}>C</button>
-      <button onClick={handleInputButtonValues}>0</button>
-      <button onClick={calculateExpression}>=</button>
-      <button onClick={handleInputButtonValues}>/</button>
+      <div className={styles.buttonDiv}>
+        <button onClick={handleInputButtonValues}>7</button>
+        <button onClick={handleInputButtonValues}>8</button>
+        <button onClick={handleInputButtonValues}>9</button>
+        <button onClick={handleInputButtonValues}>+</button>
+
+        <button onClick={handleInputButtonValues}>4</button>
+        <button onClick={handleInputButtonValues}>5</button>
+        <button onClick={handleInputButtonValues}>6</button>
+        <button onClick={handleInputButtonValues}>-</button>
+
+        <button onClick={handleInputButtonValues}>1</button>
+        <button onClick={handleInputButtonValues}>2</button>
+        <button onClick={handleInputButtonValues}>3</button>
+        <button onClick={handleInputButtonValues}>*</button>
+
+        <button onClick={clearInputBox}>C</button>
+        <button onClick={handleInputButtonValues}>0</button>
+        <button onClick={calculateExpression}>=</button>
+        <button onClick={handleInputButtonValues}>/</button>
+      </div>
     </>
   );
 }
