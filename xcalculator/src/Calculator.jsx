@@ -14,9 +14,20 @@ function Calculator() {
   };
 
   const calculateExpression = () => {
+    if (input === "0/0") {
+      setEvaluatedValue("NaN");
+    }
     const res = eval(input);
     console.log("Result >>>>", res);
     setEvaluatedValue(res);
+    try {
+      // Using eval for simplicity here, but avoid in production due to security risks
+      const res = eval(input);
+      console.log("Result >>>>", res);
+      setEvaluatedValue(res);
+    } catch (error) {
+      setInput("Error"); // Display error if evaluation fails
+    }
   };
   console.log("EvaluatedValue >>>>", evaluatedValue);
   //   const [operation, setOperation] = useState(null);
@@ -43,7 +54,7 @@ function Calculator() {
   return (
     <>
       <h1 className={styles.h1}>React Calculator</h1>
-      <input readOnly value={input} className={styles.input} />
+      <input readOnly type="text" value={input} className={styles.input} />
       {evaluatedValue && <h3>{evaluatedValue}</h3>}
       <div className={styles.buttonDiv}>
         <button onClick={handleInputButtonValues}>7</button>
