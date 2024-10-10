@@ -14,21 +14,21 @@ function Calculator() {
   };
 
   const calculateExpression = () => {
-    if (input === "0/0") {
-      setEvaluatedValue("NaN");
+    // Check for incomplete expressions
+    if (!input || /[\+\-\*\/]$/.test(input)) {
+      // Checks if input is empty or ends with an operator
+      setEvaluatedValue("Error");
+      return;
     }
-    const res = eval(input);
-    console.log("Result >>>>", res);
-    setEvaluatedValue(res);
+
     try {
-      // Using eval for simplicity here, but avoid in production due to security risks
-      const res = eval(input);
-      console.log("Result >>>>", res);
+      const res = eval(input); // Using eval for simplicity, but avoid in production
       setEvaluatedValue(res);
     } catch (error) {
-      setInput("Error"); // Display error if evaluation fails
+      setEvaluatedValue("Error"); // Set to "Error" if evaluation fails
     }
   };
+
   console.log("EvaluatedValue >>>>", evaluatedValue);
   //   const [operation, setOperation] = useState(null);
   //   const inputRef = useRef(0);
